@@ -13,8 +13,16 @@
             <th>Año</th>
           </tr>
           <xsl:for-each select="//cd">
-          <xsl:sort select="year"/>
-          <xsl:if test="year&gt;1979 and year&lt;1990">
+          <xsl:choose>
+            <xsl:when test="year&gt;1969 and year&lt;1980">
+            <tr bgcolor="yellow">
+            </xsl:when>
+            <xsl:when test="year&gt;1979 and year&lt;1990">
+            <tr bgcolor="green">
+            </xsl:when>
+            <xsl:otherwise></xsl:otherwise>
+            
+            </xsl:when>
             <tr>
               <td>
                 <xsl:value-of select="title"/>
@@ -26,7 +34,7 @@
                 <xsl:value-of select="year"/>
               </td>
             </tr>
-            </xsl:if>
+            </xsl:choose>
           </xsl:for-each>
         </table>
       </body>
